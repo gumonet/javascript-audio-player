@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main-content{
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            height: 100%;
+            align-content: center;
+            flex-direction: column;
+        }
+        .sound-item-content{
+            border:solid 1px black;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 1rem auto;
+        }
+        .icon-player{
+            width: 50px;
+            height: 50px;
+            display: flex;
+            cursor: pointer;
+        }
+        .icon-player svg{
+            width: 100%;
+        }
+        .icon-stop{
+            display: none;
+        }
+        .progress-bar{
+            width: 100%;
+            height: 20px;
+            background-color: cadetblue;
+            margin-top: 20px;
+        }
+        .progressed{
+            height: 20px;
+            background-color: blue;
+            width: 0%;
+            transition: all 0.5s;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        .progressed:after{
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: red;
+            right: -10px;
+
+        }
+    </style>
+</head>
+<body style="text-align: center;">
+    <div class="main-content">
+        <div class="sound-item-content" rel-src="sound.mp3" >
+            <div class="sound-name">
+                <span>Canción 1</span>
+            </div>
+            <div class="payer-item-buttons">
+                <i class="icon-player icon-play">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+                      </svg>
+                </i>
+                <i class="icon-player icon-stop">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
+                      </svg>
+                </i>
+            </div>
+        </div>
+        <div class="sound-item-content" rel-src="sound.mp3" >
+            <div class="sound-name">
+                <span>Canción 1</span>
+            </div>
+            <div class="payer-item-buttons">
+                <i class="icon-player icon-play">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+                      </svg>
+                </i>
+                <i class="icon-player icon-stop">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
+                      </svg>
+                </i>
+            </div>
+        </div>
+
+        <div class="control-volume">
+            <input type="range" max="1" min="0" value="1" step="0.1" class="volume">
+        </div>
+        <div class="progress-bar">
+            <div class="progressed">
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        let elAudio = document.querySelector('.sound-item-content');
+        let elPlay = elAudio.querySelector('.icon-play');
+        let elStop = elAudio.querySelector('.icon-stop');
+        let volume = document.querySelector('.volume');
+        let progress_bar = document.querySelector(".progress-bar");
+        let progressed_bar = document.querySelector(".progressed");
+        let objAudio = null;
+
+    
+        elPlay.addEventListener( 'click', function(e){
+            e.preventDefault();
+            console.log( 'PLAY' );
+            let src_audio = elAudio.getAttribute('rel-src');
+            console.log( objAudio );
+            //check if audio is pause so resume
+            if( objAudio !== null ){
+                console.log( objAudio.currentSrc );
+                objAudio.pause()
+            }
+            console.log( src_audio );
+            elPlay.style.display = 'none';
+            elStop.style.display = 'flex'; 
+            play_audio( src_audio );
+            
+        })
+
+        
+
+        elStop.addEventListener( 'click', function(e){
+            e.preventDefault();
+            if( objAudio !== null ){
+                objAudio.pause()
+            }
+            elPlay.style.display = 'flex';
+            elStop.style.display = 'none'; 
+        })
+
+        progress_bar.addEventListener('click', function( el ){
+            let to_time = ((el.offsetX/progress_bar.offsetWidth) * objAudio.duration );
+            objAudio.currentTime = to_time;
+        })
+
+        function play_audio ( src ) {
+            //Validate that field exist or catch posible errors
+            objAudio = new Audio(`${src}`);
+            objAudio.play();
+            objAudio.ontimeupdate = function() {
+                let percent_progress = Math.floor( (objAudio.currentTime  / objAudio.duration ) * 100 );
+                console.log( percent_progress);
+                progressed_bar.style.width = `${percent_progress}%`;
+            }
+        }
+
+        volume.addEventListener('click', function(){
+            let vol = this.value;
+            console.log( vol );
+            console.log( objAudio );
+            changeVolume( vol );
+        })
+        function changeVolume( value ) {
+            if( objAudio !== null ) {
+                objAudio.volume = value;
+            }
+        }
+
+    </script>
+</body>
+</html>
