@@ -26,7 +26,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _sas
   \***********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"App\": () => (/* binding */ App)\n/* harmony export */ });\nfunction App() {\n  let d = document;\n  let item_audio_content = d.querySelector('.list-audio-content');\n  console.log(item_audio_content);\n  item_audio_content.addEventListener('click', function (e) {\n    //console.log('Click on element');\n    console.log(e.target.parent);\n\n    if (e.target.className === 'audio-play') {\n      console.log('Is Item audio');\n    }\n  });\n}\n\n//# sourceURL=webpack://audio-player/./src/js/App.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"App\": () => (/* binding */ App)\n/* harmony export */ });\nfunction App() {\n  let d = document;\n  let item_audio_content = d.querySelector('.list-audio-content'); //console.log( item_audio_content );\n\n  item_audio_content.addEventListener('click', function (e) {\n    //console.log('Click on element');\n    if (e.target.classList.contains('audio-play')) {\n      console.log('Is Item audio');\n      let item_audio = e.target.parentNode.parentNode;\n      let sound_url = item_audio.getAttribute('data-rel');\n    }\n  });\n}\n\n//# sourceURL=webpack://audio-player/./src/js/App.js?");
 
 /***/ }),
 
