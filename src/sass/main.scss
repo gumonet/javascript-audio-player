@@ -1,0 +1,41 @@
+.page-content{
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            height: 100%;
+            align-content: center;
+            justify-content: center;
+    .list-audio-content{
+        max-width: 500px;
+        width: 100%;
+        .item-audio{
+            border:solid 1px black;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 1rem auto;
+            .audio-buttons{
+                .audio-btn{
+                    width: 30px;
+                    height: 30px;
+                    display: flex;
+                    background-position: center;
+                    background-size: 90%;
+                    cursor: pointer;
+                    svg{
+                        width: 100%;
+                    }
+                }
+                .audio-play{
+                    background-image: url('../images/play.svg');
+                }
+                .audio-stop{
+                    background-image: url('../images/stop.svg');
+                    display: none;
+                }
+
+            }
+        }
+    }
+}

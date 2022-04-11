@@ -1,36 +1,42 @@
+const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
+
 module.exports = {
-    module:{
-        rules:[
+    entry: './src/index.js',
+    output: {
+        filename: 'bundle.js',
+        path: path.resolve(__dirname, 'dist'),
+        //publicPath: './'
+    },
+    module: {
+        rules: [
             {
-                test: /\.js$/i,
-                //exclude: './node_modules',
-                use: {
-                    loader: "babel-loader",
-                }
+                test: /\.js$/,
+                use:['babel-loader']
             },
             {
-                test: /\.scss$/,
+                test:/\.(css|sass|scss)$/,
                 use: [
                     {
-                        loader: 'file-loader',
-                        options: {
-                            name: 'css/wp-bullet-google-rank-profit-calculator.css',
-                        }
+                        loader: MiniCssExtractPlugin.loader,
+                        /*options:{
+                            publicPath:"./"
+                        }*/
                     },
-                    {
-                        loader: 'extract-loader'
-                    },
-                    {
-                        loader: 'css-loader'
-                    },
-                    {
-                        loader: 'postcss-loader'
-                    },
-                    {
-                        loader: 'sass-loader'
-                    }
+                    'css-loader',
+                    'sass-loader',
+                    
                 ]
             },
+           
         ]
-    }
+    },
+    plugins:[
+        new CleanWebpackPlugin(),
+        new MiniCssExtractPlugin({
+            filename: 'css/main.css'
+        }),
+    ]
 }
