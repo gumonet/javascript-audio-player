@@ -31,12 +31,17 @@ const Player = (function(){
         pause_audio();
     }
 
+    function change_audio_volume( volume ){
+        objAudio.volume = volume;
+    }
+
     return {
         play_audio,
         pause_audio,
         pause_current_playing,
         resume_audio,
-        set_audio_time
+        set_audio_time,
+        change_audio_volume
     }
 
 });

@@ -1,9 +1,11 @@
 import Utils from "./Helpers/Utils";
 import Player from "./modules/Player";
 import ProgressBar from "./modules/ProgressBar";
+import VolumeControl from "./modules/VolumeControl";
 
 const App = ( function (){
     function init(){
+        VolumeControl();
         let item_audio_content = document.querySelector('.wpb-japm-list-audio-content');
         item_audio_content.addEventListener('click', function(el ){
             if ( el.target.classList.contains('wpb-japm-audio-play') ) {

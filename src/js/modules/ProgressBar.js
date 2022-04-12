@@ -1,5 +1,6 @@
-import player from "./Player";
+
 import Player from "./Player";
+import VolumeControl from "./VolumeControl";
 const ProgressBar = (function(){
     let progress_bar_section = document.querySelector(".wpb-japm-bar-player-content");
     let progress_bar_content = progress_bar_section.querySelector(".wpb-japm-progress-bar-content");

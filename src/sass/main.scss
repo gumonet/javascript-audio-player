@@ -59,7 +59,6 @@
     position: fixed;
     bottom: 0;
     background: #529eee;
-    overflow: hidden;
     display: none;
     &.show{
         display: block;
@@ -92,7 +91,7 @@
             .wpb-japm-progress-bar-fill{
                 background: brown;
                 height: 100%;
-                transition: all 2.2s;
+                transition: all 0.5s;
                 position: relative;
                 display: flex;
                 align-items: center;
@@ -106,8 +105,31 @@
         }
         .wpb-japm-volume-control{
             flex-grow: 0.3;
-            .wpb-jamp-control-volume{
+            .wpb-japm-control-volume{
                 position: absolute;
+                top: -40px;
+                left: 50px;
+                background: gray;
+                display: none;
+                justify-content: center;
+                padding: 10px;
+                &.active{
+                    display: flex;
+                }
+                .wpb-japm-control-volume-off, .wpb-japm-control-volume-up{
+                    width: 20px;
+                    height: 20px;
+                    display: flex;
+                    background-position: center;
+                    background-size: 100%;
+                    cursor: pointer;
+                }
+                .wpb-japm-control-volume-off{
+                    background-image: url('../images/volume-down.svg');
+                }
+                .wpb-japm-control-volume-up{
+                    background-image: url('../images/volume-up.svg');
+                }
             }
         }
     }
