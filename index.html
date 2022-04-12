@@ -10,20 +10,49 @@
 <body>
 
     <div class="page-content">
-        <div class="list-audio-content">
-            <div class="item-audio" data-rel="sound.mp3" >
+        <div class="wpb-japm-list-audio-content">
+            <div class="wpb-japm-item-audio" data-rel="./extra/sound.mp3" >
                 <h3>Audio name</h3>
-                <div class="audio-buttons">
-                    <span class="audio-btn audio-play">
-                        
-                    </span>
+                <div class="wpb-japm-audio-buttons">
+                    <span class="wpb-japm-audio-btn wpb-japm-audio-play"></span>
+                    <span class="wpb-japm-audio-btn wpb-japm-audio-pause hide"></span>
+                </div>
+            </div>
 
-                    <span class="audio-btn audio-stop">
-                        
-                    </span>
+            <div class="wpb-japm-item-audio" data-rel="./extra/sound2.mp3" >
+                <h3>Audio name</h3>
+                <div class="wpb-japm-audio-buttons">
+                    <span class="wpb-japm-audio-btn wpb-japm-audio-play"></span>
+                    <span class="wpb-japm-audio-btn wpb-japm-audio-pause hide"></span>
                 </div>
             </div>
         </div>
+
+        <!-- Player barcontent -->
+        <div class="wpb-japm-bar-player-content">
+            <div class="wpb-japm-bar-player-items-content">
+                <div class="wpb-japm-buttons">
+                    <span class="wpb-japm-icon">
+                        <img src="https://place-hold.it/50x50" alt="">
+                    </span>
+                    <span class="wpb-japm-audio-btn wpb-japm-audio-play"></span>
+                    <span class="wpb-japm-audio-btn wpb-japm-audio-pause hide"></span>
+                </div>
+                <div class="wpb-japm-progress-bar-content">
+                    <div class="wpb-japm-progress-bar-fill">
+                    
+                    </div>
+                </div>
+                <div class="wpb-japm-audio-meta-data">
+
+                </div>
+                <span class="wpb-japm-volume-control">
+                    <span class="wpb-japm-audio-btn wpb-japm-audio-volume"></span>
+                </span>
+            </div>
+        </div>
+        <!-- end Player barcontent -->
+
     </div>
     <script src="dist/bundle.js"></script>
 </body>

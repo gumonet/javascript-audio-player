@@ -1,41 +1,103 @@
-.page-content{
-            margin: 0 auto;
-            display: flex;
-            justify-content: center;
-            height: 100%;
-            align-content: center;
-            justify-content: center;
-    .list-audio-content{
-        max-width: 500px;
+.page-content {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    align-content: center;
+}
+
+.wpb-japm-audio-btn{
+    width: 30px;
+    height: 30px;
+    display: flex;
+    background-position: center;
+    background-size: 100%;
+    cursor: pointer;
+    svg{
         width: 100%;
-        .item-audio{
-            border:solid 1px black;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin: 1rem auto;
-            .audio-buttons{
-                .audio-btn{
-                    width: 30px;
-                    height: 30px;
-                    display: flex;
-                    background-position: center;
-                    background-size: 90%;
-                    cursor: pointer;
-                    svg{
-                        width: 100%;
-                    }
-                }
-                .audio-play{
-                    background-image: url('../images/play.svg');
-                }
-                .audio-stop{
-                    background-image: url('../images/stop.svg');
+    }
+}
+
+.wpb-japm-audio-play{
+    background-image: url('../images/play.svg');
+}
+.wpb-japm-audio-pause{
+    background-image: url('../images/pause.svg');
+    display: none;
+}
+.wpb-japm-audio-volume{
+    background-image: url('../images/volume-up.svg');
+}
+.wpb-japm-list-audio-content{
+    max-width: 500px;
+    width: 100%;
+    .wpb-japm-item-audio{
+        border:solid 1px black;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 1rem auto;
+        &.active{
+            background: brown;
+            .wpb-japm-audio-buttons{
+                .wpb-japm-audio-play{
                     display: none;
                 }
-
+                .wpb-japm-audio-pause{
+                    display: flex;
+                }
             }
+        }
+        &.pause{
+            background: #529eee;
+        }
+    }
+}
+.wpb-japm-bar-player-content{
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    background: #529eee;
+    overflow: hidden;
+    display: none;
+    &.show{
+        display: block;
+    }
+    .wpb-japm-bar-player-items-content{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        .wpb-japm-buttons{
+            display: flex;
+            align-items: center;
+           // flex-grow: 1;
+            .wpb-japm-audio-btn{
+                width: 50px;
+                height: 50px;
+            }
+        }
+        .wpb-japm-progress-bar-content{
+            flex-grow: 10;
+            background: gray;
+            height: 30px;
+            cursor: pointer;
+            .wpb-japm-progress-bar-fill{
+                background: brown;
+                height: 100%;
+                width: 50%;
+                transition: all 0.5s;
+                position: relative;
+                display: flex;
+                align-items: center;
+            }
+        }
+        .wpb-japm-audio-meta-data{
+           // flex-grow:1 ;
+        }
+        .wpb-japm-volume-control{
+            flex-grow: 0.3;
         }
     }
 }
