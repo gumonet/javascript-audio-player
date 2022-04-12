@@ -56,7 +56,7 @@
 }
 .wpb-japm-bar-player-content{
     width: 100%;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     background: #529eee;
     overflow: hidden;
@@ -77,6 +77,12 @@
                 width: 50px;
                 height: 50px;
             }
+            .wpb-japm-audio-play{
+                display: none;
+            }
+            .wpb-japm-audio-pause{
+                display: flex;
+            }
         }
         .wpb-japm-progress-bar-content{
             flex-grow: 10;
@@ -86,18 +92,23 @@
             .wpb-japm-progress-bar-fill{
                 background: brown;
                 height: 100%;
-                width: 50%;
-                transition: all 0.5s;
+                transition: all 2.2s;
                 position: relative;
                 display: flex;
                 align-items: center;
+                width: 0%;
             }
         }
         .wpb-japm-audio-meta-data{
            // flex-grow:1 ;
+            width: 100px;
+            text-align: center;
         }
         .wpb-japm-volume-control{
             flex-grow: 0.3;
+            .wpb-jamp-control-volume{
+                position: absolute;
+            }
         }
     }
 }

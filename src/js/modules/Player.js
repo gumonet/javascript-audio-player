@@ -23,6 +23,10 @@ const Player = (function(){
        // objAudio = null;
     }
 
+    function set_audio_time( value ) {
+        objAudio.currentTime = ((value) * objAudio.duration );
+    }
+
     function pause_current_playing(){
         pause_audio();
     }
@@ -31,7 +35,8 @@ const Player = (function(){
         play_audio,
         pause_audio,
         pause_current_playing,
-        resume_audio
+        resume_audio,
+        set_audio_time
     }
 
 });

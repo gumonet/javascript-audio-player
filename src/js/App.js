@@ -1,5 +1,6 @@
 import Utils from "./Helpers/Utils";
 import Player from "./modules/Player";
+import ProgressBar from "./modules/ProgressBar";
 
 const App = ( function (){
     function init(){
@@ -43,6 +44,7 @@ const App = ( function (){
 
     function resume_playing(item_audio_clicked_element){
         item_audio_clicked_element.classList.add('active');
+        ProgressBar.toggle_play_buttons();
         Player.resume_audio();
     }
 
@@ -55,6 +57,7 @@ const App = ( function (){
         let item_audio = el.target.parentNode.parentNode;
         item_audio.classList.remove('active');
         item_audio.classList.add('pause');
+        ProgressBar.toggle_pause_buttons();
         Player.pause_audio();
     }
 
@@ -64,50 +67,3 @@ const App = ( function (){
 });
 
 export default App();
-/*
-export function App () {
-    let item_audio_content = document.querySelector('.wpb-japm-list-audio-content');
-    
-    item_audio_content.addEventListener('click', function(el ){
-        //console.log('Click on element');
-        if ( el.target.classList.contains('wpb-japm-audio-play') ) {
-            //Check if exist audio playing
-            let get_active_element = document.querySelector('.wpb-japm-item-audio.active');
-            let get_pause_element  = document.querySelector('.wpb-japm-item-audio.pause');
-            let item_audio_clicked = el.target.parentNode.parentNode;
-            //If audio is paused, check if play button is on this audio if not, remove the flag.
-            if( get_pause_element !== null){
-                if( item_audio_clicked === get_pause_element ){
-                    Player.resume_audio();
-                    return false;
-                }
-                get_pause_element.classList.remove('pause');
-            }
-
-            //If some audio is playing, then stop before star a new
-            if( get_active_element !== null ) {
-                get_active_element.classList.remove('active');
-                Player.pause_current_playing();
-            }
-            
-
-            let src_audio = Utils.get_src_audio_item( item_audio_clicked )
-
-
-
-            item_audio_clicked.classList.add('active');
-            Player.play_audio( src_audio );
-
-        }
-
-        if ( el.target.classList.contains('wpb-japm-audio-pause') ) {
-            let item_audio = el.target.parentNode.parentNode;
-            item_audio.classList.remove('active');
-            item_audio.classList.add('pause');
-            Player.pause_audio();
-        }
-
-
-        return false;
-    })
-}*/
